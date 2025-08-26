@@ -1,39 +1,127 @@
-# 🔫 guns-lol-View-bot Автоматический бот на **Puppeteer** для накрутки просмотров на [guns.lol](https://guns.lol). Бот использует **прокси (Webshare API или локальный список)** и имитирует поведение живого человека: движение мыши, клики и скролл. --- ## 🚀 Возможности - 📡 Поддержка **Webshare API** для автоматической загрузки прокси. - 📂 Резервная работа через локальный файл proxies.txt. - 🖱️ Имитация "живого" поведения (движения мыши, случайные клики, скроллы). - 🔄 Запуск нескольких браузеров одновременно (**MAX_CONCURRENT**). - 🔒 Встроенные антидетект-хаки (отключение webdriver, эмуляция плагинов и устройств). - 📊 Итоговая статистика успешных/неуспешных сессий. --- ## 📋 Требования - [Node.js](https://nodejs.org/) **v18+** - [npm](https://www.npmjs.com/) или [yarn](https://yarnpkg.com/) - Аккаунт на [Webshare.io](https://www.webshare.io/) (для API-ключа и списка прокси) - Linux / Windows / macOS сервер или локальная машина --- ## ⚙️ Установка ### 1️⃣ Склонировать репозиторий
-bash
+# 🔫 guns-lol-View-bot
+
+An automatic **Puppeteer** bot for boosting views on [guns.lol](https://guns.lol).  
+The bot uses **proxies (Webshare API or local list)** and simulates human-like behavior: mouse movements, clicks, and scrolling.  
+
+---
+
+## 🚀 Features
+- 📡 Supports **Webshare API** for automatic proxy fetching.  
+- 📂 Backup mode with a local `proxies.txt` file.  
+- 🖱️ Human-like behavior emulation (mouse moves, random clicks, scrolling).  
+- 🔄 Runs multiple browsers simultaneously (**MAX_CONCURRENT**).  
+- 🔒 Built-in anti-detection tricks (disable `webdriver`, emulate plugins and devices).  
+- 📊 Final statistics of successful/failed sessions.  
+
+---
+
+## 📋 Requirements
+- [Node.js](https://nodejs.org/) **v18+**  
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)  
+- Account on [Webshare.io](https://www.webshare.io/) (for API key and proxy list)  
+- Linux / Windows / macOS server or local machine  
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
+```bash
 git clone https://github.com/username/guns-lol-View-bot.git
 cd guns-lol-View-bot
-### 2️⃣ Установить зависимости
-bash
+```
+
+### 2️⃣ Install dependencies
+```bash
 npm install
-### 3️⃣ Настроить конфиг (index.js) Открой index.js и пропиши свои данные:
-js
-const API_KEY = 'your_webshare_api_key';        // API ключ
-const DOWNLOAD_URL = 'your_webshare_url';       // ссылка на список прокси
-const MAX_CONCURRENT = 3;                       // число одновременных браузеров
-const TARGET_URL = 'https://guns.lol/guns';// ссылка для накрутки
-### 4️⃣ Добавить локальные прокси (если не используешь Webshare API) Создай файл proxies.txt в корне проекта:
+```
+
+### 3️⃣ Configure (`index.js`)
+Open `index.js` and set your data:
+```js
+const API_KEY = 'your_webshare_api_key';        // API key
+const DOWNLOAD_URL = 'your_webshare_url';       // proxy list link
+const MAX_CONCURRENT = 3;                       // number of concurrent browsers
+const TARGET_URL = 'https://guns.lol/guns';     // target URL
+```
+
+### 4️⃣ Add local proxies (if not using Webshare API)
+Create a `proxies.txt` file in the project root:  
+```
 192.168.1...:8080
 123.45.67...:3128
 45.76.23...:1080
---- ## ▶️ Запуск ### 🔹 Обычный запуск
-bash
+```
+
+---
+
+## ▶️ Run
+
+### 🔹 Normal run
+```bash
 node index.js
-### 🔹 Запуск на сервере через pm2 (рекомендуется)
-bash
+```
+
+### 🔹 Run on server with pm2 (recommended)
+```bash
 npm install -g pm2
 pm2 start index.js --name guns-lol-bot
 pm2 logs guns-lol-bot
---- ## 🛠️ Настройки | Параметр | Описание | |------------------|----------| | **API_KEY** | Токен от Webshare (если используешь API) | | **DOWNLOAD_URL** | Ссылка на скачивание списка прокси (Webshare) | | **MAX_CONCURRENT** | Сколько браузеров запускать параллельно (1–10) | | **TARGET_URL** | Ссылка на guns.lol, для которой нужны просмотры | --- ## 📂 Структура проекта
+```
+
+---
+
+## 🛠️ Settings
+
+| Parameter        | Description |
+|------------------|-------------|
+| **API_KEY**      | Webshare token (if using API) |
+| **DOWNLOAD_URL** | Proxy list download URL (Webshare) |
+| **MAX_CONCURRENT** | Number of parallel browsers (1–10) |
+| **TARGET_URL**   | guns.lol link to boost views for |
+
+---
+
+## 📂 Project Structure
+```
 guns-lol-View-bot/
-├── index.js        # основной скрипт
-├── package.json    # зависимости проекта
-├── proxies.txt     # список прокси (если нет Webshare API)
-└── README.md       # документация
---- ## ❓ FAQ ### ❌ Прокси не загружаются - Проверь API_KEY и DOWNLOAD_URL. - Если API не доступен → используй proxies.txt. ### ❌ Сайт блокирует бота - Увеличь задержки в функции delay. - Используй **живые резидентские прокси**. - Уменьши MAX_CONCURRENT. ### ❌ Не работает на VPS (Linux) Установи Chromium вручную:
-bash
+├── index.js        # main script
+├── package.json    # project dependencies
+├── proxies.txt     # proxy list (if no Webshare API)
+└── README.md       # documentation
+```
+
+---
+
+## ❓ FAQ
+
+### ❌ Proxies are not loading
+- Check `API_KEY` and `DOWNLOAD_URL`.  
+- If API is unavailable → use `proxies.txt`.  
+
+### ❌ Site blocks the bot
+- Increase delays in the `delay` function.  
+- Use **residential proxies**.  
+- Lower `MAX_CONCURRENT`.  
+
+### ❌ Not working on VPS (Linux)
+Install Chromium manually:
+```bash
 sudo apt-get update
 sudo apt-get install -y chromium-browser
-И добавь флаги в args (уже включены в код):
-js
+```
+And add flags in `args` (already included in code):
+```js
 args: ['--no-sandbox', '--disable-setuid-sandbox']
---- ## ⚠️ Дисклеймер > Проект создан исключительно в **образовательных целях**. > Автор не несёт ответственности за использование кода для нарушений правил сайтов или законодательства. --- ## ⭐ Поддержка Если проект оказался полезен — поставь ⭐ на GitHub и расскажи друзьям 😉 сделай ещё readme такое же на англ и в txt скинь мне
+```
+
+---
+
+## ⚠️ Disclaimer
+> Project created for **educational purposes only**.  
+> The author is not responsible for any misuse of the code that violates site rules or laws.  
+
+---
+
+## ⭐ Support
+If you find this project useful — give it a ⭐ on GitHub and share with friends 😉
