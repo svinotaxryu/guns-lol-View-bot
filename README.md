@@ -34,6 +34,8 @@ cd guns-lol-View-bot
 ### 2️⃣ Install dependencies
 ```bash
 npm install
+
+npm install puppeteer
 ```
 
 ### 3️⃣ Configure (`index.js`)
